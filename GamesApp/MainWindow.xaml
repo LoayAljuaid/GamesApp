@@ -1,0 +1,86 @@
+﻿<Window  xmlns:wpf="http://schemas.microsoft.com/netfx/2007/xaml/presentation" x:Class="GamesApp.MainWindow"
+        xmlns="http://microsoft.com"
+        xmlns:x="http://microsoft.com"
+        Title="GamesApp Launcher" Height="720" Width="1200"
+        WindowStartupLocation="CenterScreen"
+        Background="#0F0D1B" Foreground="White" FontFamily="Segoe UI">
+    <Window.Resources>
+        <Style x:Key="NavButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <wpf:Setter Property="Foreground" Value="#A09EB2"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Height" Value="48"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Padding" Value="20,0,0,0"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+        <Style x:Key="PosterCardStyle" TargetType="Button">
+            <Setter Property="Width" Value="185"/>
+            <Setter Property="Height" Value="265"/>
+            <Setter Property="Margin" Value="0,0,18,0"/>
+            <Setter Property="Background" Value="#19162B"/>
+            <Setter Property="BorderBrush" Value="#2A2645"/>
+            <Setter Property="BorderThickness" Value="1.5"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Border Grid.Column="0" Background="#131022" BorderBrush="#1F1B36" BorderThickness="0,0,1,0">
+            <StackPanel Margin="0,20,0,0">
+                <TextBlock Text="GAMESAPP" FontSize="20" FontWeight="Bold" Foreground="#8A56AC" Margin="24,0,0,30"/>
+                <Button Content="Board" Style="{StaticResource NavButtonStyle}" Foreground="White" Background="#1E1A36" Click="SidebarNav_Click"/>
+                <Button Content="All Games" Style="{StaticResource NavButtonStyle}" Click="SidebarNav_Click"/>
+                <Button Content="Tweaks" Style="{StaticResource NavButtonStyle}" Click="SidebarNav_Click"/>
+                <Button Content="Settings" Style="{StaticResource NavButtonStyle}" Click="SidebarNav_Click"/>
+            </StackPanel>
+        </Border>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0" Padding="30,15" BorderBrush="#1F1B36" BorderThickness="0,0,0,1">
+                <TextBox x:Name="SearchBox" Width="360" HorizontalAlignment="Left" Background="#19162B" Foreground="#A09EB2" BorderThickness="0" Padding="12,8" FontSize="14" Text="Search games or apps..." GotFocus="SearchBox_GotFocus" LostFocus="SearchBox_LostFocus" TextChanged="SearchBox_TextChanged"/>
+            </Border>
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Padding="30,25">
+                <StackPanel>
+                    <Border Height="200" CornerRadius="12" Margin="0,0,0,30" Padding="30" Background="#251A3E">
+                        <StackPanel VerticalAlignment="Center">
+                            <TextBlock Text="FEATURED LAUNCH" FontSize="12" FontWeight="Bold" Foreground="#B983FF" Margin="0,0,0,6"/>
+                            <TextBlock Text="Game Mode &amp; Optimizer" FontSize="26" FontWeight="Bold" Foreground="White" Margin="0,0,0,8"/>
+                            <TextBlock Text="Launch your favorite games and system tools in one click." FontSize="14" Foreground="#D0CDE0" Margin="0,0,0,16"/>
+                            <Button Content="Launch Now" Width="140" Height="38" HorizontalAlignment="Left" Background="#8A56AC" Foreground="White" FontWeight="Bold" BorderThickness="0" Click="LaunchApp_Click" Tag="notepad.exe"/>
+                        </StackPanel>
+                    </Border>
+                    <TextBlock Text="Installed Games" FontSize="18" FontWeight="Bold" Foreground="White" Margin="0,0,0,15"/>
+                    <StackPanel x:Name="GamesRowPanel" Orientation="Horizontal">
+                        <Button Style="{StaticResource PosterCardStyle}" Click="LaunchApp_Click" Tag="calc.exe">
+                            <StackPanel>
+                                <Border Height="195" Width="180" Background="#252040">
+                                    <TextBlock Text="GAME 1" FontSize="22" FontWeight="Bold" Foreground="#8A56AC" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                <TextBlock Text="Game Title 1" FontWeight="Bold" FontSize="14" Foreground="White" Margin="10,8,0,0"/>
+                                <TextBlock Text="Click to Launch" FontSize="11" Foreground="#8E8AA8" Margin="10,2,0,0"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource PosterCardStyle}" Click="LaunchApp_Click" Tag="mspaint.exe">
+                            <StackPanel>
+                                <Border Height="195" Width="180" Background="#252040">
+                                    <TextBlock Text="GAME 2" FontSize="22" FontWeight="Bold" Foreground="#8A56AC" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                <TextBlock Text="Game Title 2" FontWeight="Bold" FontSize="14" Foreground="White" Margin="10,8,0,0"/>
+                                <TextBlock Text="Click to Launch" FontSize="11" Foreground="#8E8AA8" Margin="10,2,0,0"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Window>
